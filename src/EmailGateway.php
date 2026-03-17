@@ -10,6 +10,9 @@ class EmailGateway
     /**
      * Create a new class instance.
      */
+    protected string $apiKey;
+    protected string $apiUrl;
+
     protected $to = [];
     protected $cc = [];
     protected $bcc = [];
@@ -18,11 +21,18 @@ class EmailGateway
     protected $text;
     protected $from;
     protected $attachments = [];
-
     public function __construct()
     {
-        
+        $this->apiKey = $config['key'] ?? '';
+        $this->apiUrl = $config['url'] ?? '';
     }
+
+        public function setConfig(array $config): self
+        {
+            $this->apiKey = $config['key'] ?? $this->apiKey;
+            $this->apiUrl = $config['url'] ?? $this->apiUrl;
+            return $this;
+        }
 
         public static function to($emails)
         {
@@ -99,11 +109,11 @@ class EmailGateway
                     // Log::
                    try {
                       Http::withHeaders([
-                        'x-api-key' => config('services.mail_gateway.key')
+                        'x-api-key' =>$this->apiKey
                     ])
                     ->timeout(10)
                     ->retry(3, 1000)
-                    ->post(config('services.mail_gateway.url'), [
+                    ->post($this->apiUrl, [
                         'to' => $this->to,
                         'cc' => $this->cc,
                         'bcc' => $this->bcc,
