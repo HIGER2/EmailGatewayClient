@@ -1,0 +1,12 @@
+{
+  "name": "armand/emailgateway-client",
+  "description": "Client pour envoyer les emails via EmailGateway",
+  "autoload": {
+    "psr-4": {
+      "EmailGatewayClient\\": "src/"
+    }
+  },
+   "require": {
+    "illuminate/support": "^12.0"   
+  }
+}
