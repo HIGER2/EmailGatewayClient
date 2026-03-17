@@ -87,7 +87,7 @@ class EmailGateway
                  // 📎 fichier brut (string)
                 public function attachRaw($content, $name)
                 {
-                    $this->attachments[] = [
+                    $response =  $this->attachments[] = [
                         'name' => $name,
                         'content' => base64_encode($content)
                     ];
