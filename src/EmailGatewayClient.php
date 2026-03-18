@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Service;
+namespace EmailGatewayClient;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
-class EmailGateway
+class EmailGatewayClient
 {
     /**
      * Create a new class instance.

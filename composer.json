@@ -7,6 +7,9 @@
     }
   },
    "require": {
-    "illuminate/support": "^11.0"   
+    "illuminate/support": "^12.55",
+    "illuminate/http": "^12.55",
+    "illuminate/log": "^12.55",
+    "illuminate/view": "^12.55"   
   }
 }
