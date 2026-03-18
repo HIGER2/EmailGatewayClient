@@ -108,7 +108,7 @@ class EmailGatewayClient
                 {
                     // Log::
                    try {
-                     $response = Http::withHeaders([
+                    $response = Http::withHeaders([
                         'x-api-key' =>$this->apiKey
                     ])
                     ->timeout(10)
@@ -125,9 +125,10 @@ class EmailGatewayClient
                     ]);
 
                     Log::info('Email envoyé', ['response' => $response->json()]);
+
                     return $response->json();
                    } catch (\Throwable $th) {
-                    Log::error('Erreur EmailGateway', ['message' => $e->getMessage()]);
+                    Log::error('Erreur EmailGateway', ['message' => $th->getMessage()]);
                     return false;
                    }
 
