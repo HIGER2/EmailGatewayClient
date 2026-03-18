@@ -108,7 +108,7 @@ class EmailGateway
                 {
                     // Log::
                    try {
-                      Http::withHeaders([
+                     $response = Http::withHeaders([
                         'x-api-key' =>$this->apiKey
                     ])
                     ->timeout(10)
