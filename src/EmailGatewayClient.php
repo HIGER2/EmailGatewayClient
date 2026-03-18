@@ -107,30 +107,22 @@ class EmailGatewayClient
                 public function send()
                 {
                     // Log::
-                   try {
                     $response = Http::withHeaders([
-                        'x-api-key' =>$this->apiKey
-                    ])
-                    ->timeout(10)
-                    ->retry(3, 1000)
-                    ->post($this->apiUrl, [
-                        'to' => $this->to,
-                        'cc' => $this->cc,
-                        'bcc' => $this->bcc,
-                        'subject' => $this->subject,
-                        'html' => $this->html,
-                        'text' => $this->text,
-                        'from' => $this->from,
-                        'attachments' => $this->attachments,
-                    ]);
-
-                    Log::info('Email envoyé', ['response' => $response->json()]);
-
-                    return $response->json();
-                   } catch (\Throwable $th) {
-                    Log::error('Erreur EmailGateway', ['message' => $th->getMessage()]);
-                    return false;
-                   }
-
+                            'x-api-key' =>$this->apiKey
+                        ])
+                        ->timeout(10)
+                        ->retry(3, 1000)
+                        ->post($this->apiUrl, [
+                            'to' => $this->to,
+                            'cc' => $this->cc,
+                            'bcc' => $this->bcc,
+                            'subject' => $this->subject,
+                            'html' => $this->html,
+                            'text' => $this->text,
+                            'from' => $this->from,
+                            'attachments' => $this->attachments,
+                        ]);
+                        Log::info('Email envoyé', ['response' => $response->json()]);
+                        return $response;
                 }
 }
